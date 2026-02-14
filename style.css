@@ -510,13 +510,14 @@ video {
 /* feature  */
 .features-section {
    background-color: white;
-   padding: 80px 30px;
-
+   margin: 0 auto;
+   padding: 80px 200px;
+   width: 100%;
 }
 
 .features-container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1000px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -528,7 +529,7 @@ video {
             align-items: center;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 0.5px;
             color: #000;
             text-transform: uppercase;
             margin-top: 15px; 
@@ -538,32 +539,31 @@ video {
             width: 8px;
             height: 8px;
             background-color: #f0abfc; 
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         /* The main headline */
         .headline {
-            font-size: 64px;
+            font-size: 54px;
             line-height: 1.1;
-            font-weight: 400;
+            font-weight: normal;
             color: #111;
             text-align: right;
-            margin: 0;
-            max-width: 600px;
+            margin-left: 500px;
+                
+        }
+        .info-img1 {
+            width: 1145px;
+            height: 400px;
+            border-radius: 5px;
+            
         }
 
-        /* Responsive adjustment for smaller screens */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .headline {
-                text-align: left;
-                font-size: 40px;
-                margin-top: 20px;
-            }
+        .info-img2{
+           width: 1145px;
+           height: 400px;
         }
+       
 
 
 
@@ -652,3 +652,16 @@ video {
     .hero-bottom { flex-direction: column; }
     .hero-top .subtitle br { display: none; }
 }
+
+ /* Responsive adjustment for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .headline {
+                text-align: left;
+                font-size: 40px;
+                margin-top: 20px;
+            }
+        }
