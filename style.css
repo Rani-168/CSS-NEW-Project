@@ -4,6 +4,12 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: var(--primary-color);
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: var(--text-main);
+}
+
 @font-face {
   font-family: "Windsurf primary";
   src: url("https://windsurf.com/_next/static/media/3ecc75a922018515-s.p.woff2");
@@ -19,14 +25,36 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background-color: var(--secondary-color);
+  color: black;
+}
+
+:root {
+  --primary-color: #011c42;
+  --secondary-color: #34e8bb;
+  --font-primary: "Windsurf primary";
+  --font-secondary: "Windsurf secondary";
+  --bg-color: #020617; /* Deep dark blue */
+  --color-1: #1e40af;  /* Royal blue */
+  --color-2: #3b82f6;  /* Bright blue */
+  --color-3: #9333ea;  /* Purple */
+  --bg-dark: #020b1a;
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --accent-yellow: #eab308;
+    --accent-pink: #d946ef;
+    --wave-blue: #3b82f6;
+}
+
 header {
   display: flex;
   justify-content: space-between;
-  background-color: #011c42;
+  background-color: var(--primary-color);
   height: 12vh;
   align-items: center;
   padding-left: 6vw;
-  font-family: "Windsurf secondary";
+  font-family: var(--font-secondary);
 
   text-transform: uppercase;
 }
@@ -36,13 +64,19 @@ header a {
   font-weight: bold;
 }
 
+nav div {
+  height: 12vh;
+  display: flex;
+  align-items: center;
+}
+
+nav div:hover a {
+  background-color: #ffffff33;
+}
+
 nav a {
   padding: 8px;
   border-radius: 8px;
-}
-
-nav a:hover {
-  background-color: #ffffff33;
 }
 
 nav a i {
@@ -57,9 +91,14 @@ nav a:hover i {
   width: 160px;
 }
 
+.mobile-windsurf-logo {
+  display: none;
+}
+
 nav {
   display: flex;
   gap: 40px;
+  align-items: center;
 }
 
 .header-last {
@@ -69,13 +108,32 @@ nav {
 }
 
 .user-profile {
-  border: 1px solid white;
   border-radius: 50%;
-  padding: 8px;
+  padding: 2px;
+  transition: border 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.user-profile:hover {
+  border: 2px solid var(--secondary-color);
+}
+
+.user-profile i {
+  border: 1px solid white;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile:hover {
+  /* outline: 2px solid #34e8bb; */
 }
 
 .download-btn {
-  background-color: #34e8bb;
+  background-color: var(--secondary-color);
   color: black;
   height: 12vh;
   display: inline-block;
@@ -97,7 +155,340 @@ nav {
   height: 300px;
   width: 200px;
   position: absolute;
-  top: 8vh;
+  top: 12vh;
   left: -4px;
   display: none;
+}
+
+/* main section start */
+
+main {
+  height: 88vh;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 6vw;
+}
+
+main h1 {
+  color: white;
+  font-family: var(--font-primary);
+  font-size: 64px;
+  font-weight: 500;
+}
+
+.main-options {
+  display: flex;
+  gap: 12px;
+  margin: 8vh 0;
+}
+
+.main-options button,
+.main-options a {
+  padding: 16px 32px;
+  border-radius: 2px;
+  font-family: var(--font-secondary);
+}
+
+.main-options button {
+  background-color: var(--secondary-color);
+  border: none;
+}
+
+.main-options a {
+  background-color: #ffffff33;
+}
+
+.main-subtext {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-secondary);
+}
+
+.main-subtext div {
+  height: 8px;
+  width: 8px;
+  background-color: var(--secondary-color);
+}
+
+/* marquee section start */
+
+.marquee-section {
+  background-color: var(--primary-color);
+  overflow: hidden;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  height: 30vh;
+  gap: 40px;
+  animation: marquee-animation 14s linear infinite;
+}
+
+@keyframes marquee-animation {
+  from {
+    translate: 0%;
+  }
+  to {
+    translate: -100%;
+  }
+}
+
+.marquee img {
+  width: 80px;
+}
+
+.mobile-options {
+  display: none;
+}
+
+
+/* cascade-section*/
+
+.cascade-section {
+    position: relative;
+    padding: 100px 20px;
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    max-width: 900px;
+    text-align: center;
+    z-index: 5;
+}
+
+/* --- Animated Ribbons --- */
+.ribbon {
+    position: absolute;
+    width: 200%;
+    height: 150px;
+    filter: blur(40px);
+    opacity: 0.5;
+    
+    animation: waveFlow 10s infinite linear;
+}
+
+.ribbon-top {
+    top: -50px;
+    left: -50%;
+    transform: rotate(-2deg);
+}
+
+.ribbon-bottom {
+    bottom: -50px;
+    right: -50%;
+    transform: rotate(2deg);
+    animation-direction: reverse;
+}
+
+@keyframes waveFlow {
+    0% { transform: translateX(-20%) rotate(-2deg); }
+    50% { transform: translateX(0%) rotate(0deg) scaleY(1.2); }
+    100% { transform: translateX(-20%) rotate(-2deg); }
+}
+
+/* --- Typography & Layout --- */
+.eyebrow {
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 80px;
+    font-weight: 500;
+    margin: 0 0 30px 0;
+}
+
+.description {
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    font-size: 18px;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 40px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    text-align: left;
+    align-items: start;
+}
+
+.footer-left h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.footer-right p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.cta {
+    color: var(--accent-pink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+/* header responsive code */
+
+@media (width <= 1200px) {
+  .windsurf-logo {
+    display: none;
+  }
+
+  .mobile-windsurf-logo {
+    display: block;
+    width: 40px;
+  }
+}
+
+@media (width <= 1024px) {
+  header {
+    height: 8vh;
+  }
+  nav {
+    display: none;
+  }
+
+  .header-last {
+    display: none;
+  }
+
+  .mobile-options {
+    display: block;
+    background-color: var(--secondary-color);
+    height: 100%;
+    width: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+/* --- FULL RESPONSIVE CODE --- */
+
+/* Tablet & Large Mobile (under 1024px) */
+@media (max-width: 1024px) {
+    main h1 {
+        font-size: 48px; /* Scaled down from 64px */
+    }
+
+    .title {
+        font-size: 60px; /* Cascade title scaling */
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack the footer columns */
+        gap: 30px;
+        text-align: center;
+    }
+
+    .footer-right p {
+        margin: 0 auto 20px auto;
+        max-width: 500px;
+    }
+}
+
+video {
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Mobile Devices (under 768px) */
+@media (max-width: 768px) {
+    /* Hero Section */
+    main {
+        padding: 10vw 6vw;
+        height: auto; /* Allow content to dictate height */
+        min-height: 70vh;
+    }
+
+    main h1 {
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .main-options {
+        flex-direction: column; /* Stack buttons vertically */
+        width: 100%;
+    }
+
+    .main-options button, 
+    .main-options a {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Marquee Section */
+    .marquee {
+        height: 20vh;
+        gap: 20px;
+    }
+
+    .marquee img {
+        width: 60px; /* Smaller logos on mobile */
+    }
+
+    /* Cascade Section */
+    .cascade-section {
+        padding: 60px 20px;
+    }
+
+    .title {
+        font-size: 42px; /* Large title scaling */
+    }
+
+    .eyebrow {
+        font-size: 12px;
+    }
+
+    .description {
+        font-size: 16px;
+    }
+
+    .footer-left h2 {
+        font-size: 22px; /* Sub-heading scaling */
+    }
+
+    /* Ribbon adjustments - prevent horizontal scroll on mobile */
+    .ribbon {
+        height: 80px;
+        filter: blur(30px);
+    }
+}
+
+/* Very Small Devices (under 480px) */
+@media (max-width: 480px) {
+    main h1 {
+        font-size: 32px;
+    }
+
+    .title {
+        font-size: 36px;
+    }
+
+    .main-subtext p {
+        font-size: 14px;
+    }
 }
