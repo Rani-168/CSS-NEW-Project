@@ -125,9 +125,7 @@ nav {
   justify-content: center;
 }
 
-.user-profile:hover {
-  /* outline: 2px solid #34e8bb; */
-}
+
 
 .download-btn {
   background-color: var(--secondary-color);
@@ -321,9 +319,10 @@ main h1 {
 .footer-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 40px;
+    gap: 200px;
     text-align: left;
     align-items: start;
+   
 }
 
 .footer-left h2 {
